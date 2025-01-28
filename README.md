@@ -46,9 +46,11 @@ Training and validation datasets are loaded using image_dataset_from_directory.
 The model is compiled with the Adam optimizer, categorical cross-entropy loss, and accuracy as a metric.
 ##Save and Load the Model
 The trained model is saved in HDF5 format:
-model.save("disease_detection_model.h5")
+```bash
+   model.save("disease_detection_model.h5")
+```
 To load the model for inference:
- ```bash
+```bash
    loaded_model = tf.keras.models.load_model("disease_detection_model.h5")
 ```
 ## Testing the Model
@@ -56,17 +58,21 @@ To test the model with a new image:
 Preprocess the image to resize it to 224x224 and normalize pixel values.
 Use model.predict() to obtain predictions.
 Example:
+```bash
 from tensorflow.keras.preprocessing import image
 img = image.load_img("data/test/DME/dme_test_1004.jpg", target_size=(224, 224))
 img_array = image.img_to_array(img) / 255.0
 img_array = np.expand_dims(img_array, axis=0)
 predictions = loaded_model.predict(img_array)
 print(f"Predicted Class: {predicted_class}")
+```
 ## Evaluation
 Evaluate the model on the validation dataset:
+```bash
 test_loss, test_accuracy = model.evaluate(val_dataset)
 print(f"Validation Accuracy: {test_accuracy:.2f}")
+```
 ## Results
 The model achieved:
--Training Accuracy: ~95.8%
--Validation Accuracy: ~90.0%
+- Training Accuracy: ~95.8%
+- Validation Accuracy: ~90.0%
