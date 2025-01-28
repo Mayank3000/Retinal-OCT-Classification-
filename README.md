@@ -29,17 +29,17 @@ The dataset used in this project contains images organized into eight classes:
 ## Model Architecture
 The model is a Convolutional Neural Network (CNN) with the following layers:
 
-1.Three convolutional layers with ReLU activation and max pooling.
-2.A fully connected (dense) layer with 256 units and dropout for regularization.
-3.A final softmax layer with 8 units corresponding to the number of classes.
+1. Three convolutional layers with ReLU activation and max pooling.
+2. A fully connected (dense) layer with 256 units and dropout for regularization.
+3. A final softmax layer with 8 units corresponding to the number of classes.
 ## Data Augmentation
 The training images are augmented using:
 
--Random flips
--Random rotations
--Random zoom
--Random contrast changes
--Normalization
+- Random flips
+- Random rotations
+- Random zoom
+- Random contrast changes
+- Normalization
 
 ## Training the Model
 Training and validation datasets are loaded using image_dataset_from_directory.
@@ -48,7 +48,9 @@ The model is compiled with the Adam optimizer, categorical cross-entropy loss, a
 The trained model is saved in HDF5 format:
 model.save("disease_detection_model.h5")
 To load the model for inference:
-loaded_model = tf.keras.models.load_model("disease_detection_model.h5")
+ ```bash
+   loaded_model = tf.keras.models.load_model("disease_detection_model.h5")
+```
 ## Testing the Model
 To test the model with a new image:
 Preprocess the image to resize it to 224x224 and normalize pixel values.
